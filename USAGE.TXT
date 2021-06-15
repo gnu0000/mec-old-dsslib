@@ -1,0 +1,41 @@
+Copyright (c) 1993-1994 by Inüo Tech. Inc.  All Rights Reserved.
+
+DSSLIB  DSS Library Manager      1.2a                                Aug 09 1994
+
+USAGE:  DSLIB /Poof [command] [options] DSLLibrary files
+
+WHERE:  DSLLibrary .. The library to process.
+        Files ....... The files to add/del/list...
+
+        command ..... Is one of the following:
+            /a ........ Add files to library.
+            /m ........ Move files to library.
+            /x ........ Extract files from library.
+            /e ........ Extract files to stdout.
+            /d ........ Delete files from library.
+            /l ........ List files in library.
+            /t ........ Test files in library.
+            /i=file ... Add description file to library.
+
+        options ..... Are zero or more of the following:
+            /c# ....... 0-3 compression method 0=none 3=best.
+            /y ........ Assume Yes to all overwrite prompts.
+            /n ........ Assume No to all overwrite prompts.
+            /s ........ Include System Files in search.
+            /h ........ Include Hidden files in search.
+            /q ........ Work Quietly.
+            /k ........ Check file before extracting.
+
+
+
+Example:
+
+   DSSLIB /Poof /e /q /k SASLIB1 BUGGY.SAS
+           ^     ^  ^  ^ ^       ^
+           |     |  |  | |       |
+           |     |  |  | |       +-- File to extract
+           |     |  |  | +-- Library to extract from
+           |     |  |  +--Test before extracting file
+           |     |  +--Do all work quietly (no messages)
+           |     +--Extract files from library
+           +--Magic param, required to do anything

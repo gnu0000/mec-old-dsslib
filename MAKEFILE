@@ -1,0 +1,25 @@
+DEBUG = FALSE
+
+!IF "$(DEBUG)" == "TRUE"
+COPT = /c /W3 /AL /Od /Zip /nologo
+LOPT = /CO/NOLOGO/NOD/NOE
+LIBS = os2 llibcep GnuLibD
+BIND = rem
+!ELSE
+COPT = /c /W3 /AL /Ox /Grs /Zp /nologo
+LOPT = /E/F/PACKC/NOLOGO/NOD/NOE
+LIBS = os2 llibcep GnuLibO
+BIND = bind $*.exe
+!ENDIF
+
+all : DSSLIB.EXE
+
+DSSLIB.OBJ  : DSSLIB.C
+  cl $(COPT) $*.c
+
+READDSL.OBJ : READDSL.C
+  cl $(COPT) $*.c
+      
+DSSLIB.EXE : DSSLIB.OBJ READDSL.OBJ
+  link $* READDSL.OBJ $(LOPT),,NUL,$(LIBS),$*.def
+  $(BIND)
